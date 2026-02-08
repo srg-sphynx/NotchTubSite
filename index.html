@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotchTub — Native Dynamic Interface for macOS</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#a855f7",
+            "brand-purple": "#a855f7",
+            "background-dark": "#050505",
+            "background-light": "#ffffff",
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 4s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%, 100%': { opacity: 0.5, filter: 'blur(80px)' },
+              '50%': { opacity: 0.8, filter: 'blur(100px)' },
+            }
+          }
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-purple-500/30 overflow-x-hidden transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <nav
+      class="max-w-5xl mx-auto flex items-center justify-between px-6 py-3 backdrop-blur-2xl bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-full shadow-2xl transition-colors duration-300">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="NotchTub Logo" class="w-8 h-8 rounded-lg shadow-sm">
+        <span class="font-bold text-xl tracking-tight">NotchTub</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a class="text-brand-purple transition-colors" href="index.html">Home</a>
+        <a class="hover:text-brand-purple transition-colors" href="features.html">Features</a>
+        <a class="hover:text-brand-purple transition-colors" href="specs.html">Tech Specs</a>
+        <a class="hover:text-brand-purple transition-colors flex items-center gap-1"
+          href="https://github.com/srg-sphynx/NotchTub" target="_blank">
+          GitHub
+          <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <span class="material-symbols-outlined text-xl">dark_mode</span>
+        </button>
+        <a class="bg-black dark:bg-white text-white dark:text-black hover:opacity-80 px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-lg"
+          href="https://github.com/srg-sphynx/NotchTub/releases">
+          Download Beta
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative pt-32 pb-20">
+    <!-- Background Effects -->
+    <div
+      class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/20 dark:bg-purple-600/20 animate-glow rounded-full -z-10 pointer-events-none mix-blend-multiply dark:mix-blend-normal blur-3xl">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 text-center animate-on-scroll">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md mb-8 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+        </span>
+        <span class="text-xs font-semibold uppercase tracking-wider opacity-80">v1.0 Now Available</span>
+      </div>
+
+      <h1
+        class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-purple-600 dark:from-white dark:to-purple-400">
+        Native Dynamic Interface <br class="hidden lg:block" />
+        for macOS
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-12 leading-relaxed">
+        Repurpose your hardware notch into a functional interface.
+        Media management, system telemetry, and productivity tools—instantly accessible.
+      </p>
+
+      <!-- Interactive Notch Simulator Area -->
+      <div id="notch-simulator-area"
+        class="relative max-w-4xl mx-auto mb-20 h-[300px] flex justify-center items-start pt-10">
+
+        <!-- Hover Zones (Invisible triggers) -->
+        <div class="absolute top-0 left-0 w-full h-full z-20 flex justify-center">
+          <div class="w-[150px] h-[60px] hover-zone cursor-pointer" data-state="media"></div>
+          <!-- Left triggers Media -->
+          <div class="w-[150px] h-[60px] hover-zone cursor-pointer" data-state="system"></div>
+          <!-- Center triggers System -->
+          <div class="w-[150px] h-[60px] hover-zone cursor-pointer" data-state="privacy"></div>
+          <!-- Right triggers Privacy -->
+        </div>
+
+        <!-- The Physical Notch Appearance -->
+        <div id="notch-container"
+          class="relative z-10 bg-black rounded-b-[20px] w-[200px] h-[35px] flex items-center justify-center transition-all duration-300 border-b border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden hover:w-[450px] hover:h-[60px] notch-container">
+
+          <!-- Webcam cutout visual -->
+          <div class="absolute top-0 w-32 h-4 bg-black/50 z-0"></div>
+
+          <!-- Content: Default (Logo) -->
+          <div class="content-default absolute inset-0 flex items-center justify-center">
+            <img src="assets/logo.png" alt="NotchTub" class="w-8 h-8 opacity-80">
+          </div>
+
+          <!-- Content: Media State -->
+          <div class="content-media w-full h-full flex items-center justify-between px-4 text-white">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center">
+                <span class="material-symbols-outlined text-sm">music_note</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-xs font-bold leading-none">Do I Wanna Know?</span>
+                <span class="text-[10px] opacity-60">Arctic Monkeys</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg cursor-pointer hover:text-purple-400">skip_previous</span>
+              <span class="material-symbols-outlined text-2xl cursor-pointer hover:text-purple-400">play_circle</span>
+              <span class="material-symbols-outlined text-lg cursor-pointer hover:text-purple-400">skip_next</span>
+            </div>
+          </div>
+
+          <!-- Content: System State -->
+          <div class="content-system w-full h-full flex items-center justify-around px-4 text-white">
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-[9px] uppercase opacity-50 tracking-wider">CPU</span>
+              <span class="text-xs font-mono font-bold text-blue-400">14%</span>
+            </div>
+            <div class="h-6 w-px bg-white/10"></div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-[9px] uppercase opacity-50 tracking-wider">RAM</span>
+              <span class="text-xs font-mono font-bold text-green-400">4.2GB</span>
+            </div>
+            <div class="h-6 w-px bg-white/10"></div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="text-[9px] uppercase opacity-50 tracking-wider">Net</span>
+              <span class="text-xs font-mono font-bold text-yellow-400">↓12MB</span>
+            </div>
+          </div>
+
+          <!-- Content: Privacy State -->
+          <div class="content-privacy w-full h-full flex items-center justify-center gap-8 px-4 text-white">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span class="text-xs font-medium">Camera Active</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
+              <span class="text-xs font-medium">Mic Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute top-[100px] text-center text-sm text-slate-500">
+          <span class="material-symbols-outlined text-lg animate-bounce mb-2">touch_app</span>
+          <p>Hover over the notch to interact</p>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+          href="https://github.com/srg-sphynx/NotchTub/releases">
+          <span class="material-symbols-outlined">download</span>
+          Download on GitHub
+        </a>
+        <a class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/10 transition-colors"
+          href="https://buymeacoffee.com/saketa">
+          <span class="material-symbols-outlined">coffee</span>
+          Buy Me a Coffee
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="border-t border-black/5 dark:border-white/10 py-12 px-6 bg-black/5 dark:bg-black/50">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <span class="font-bold text-xl">NotchTub</span>
+        <p class="text-zinc-600 dark:text-zinc-500 text-sm">Open source since 2024. Licenced under GPL-3.0.</p>
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+          href="https://twitter.com/saketareddy">Built by Saketa Reddy</a>
+        <span class="text-zinc-400 dark:text-zinc-600">|</span>
+        <a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+          href="#">AntiGravity AI</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

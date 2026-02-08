@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotchTub — Features & Customization</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#a855f7",
+                        "brand-purple": "#a855f7",
+                        "background-dark": "#050505",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "system-ui", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .grid-card {
+            background: rgba(255, 255, 255, 0.5);
+            /* Light mode default */
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dark .grid-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .grid-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.15);
+        }
+
+        .dark .grid-card:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Hide scrollbar for showcase */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-purple-500/30 overflow-x-hidden transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <nav
+            class="max-w-5xl mx-auto flex items-center justify-between px-6 py-3 backdrop-blur-2xl bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-full shadow-2xl transition-colors duration-300">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/logo.png" alt="NotchTub Logo" class="w-8 h-8 rounded-lg shadow-sm">
+                <span class="font-bold text-xl tracking-tight">NotchTub</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a class="hover:text-brand-purple transition-colors" href="index.html">Home</a>
+                <a class="text-brand-purple transition-colors" href="features.html">Features</a>
+                <a class="hover:text-brand-purple transition-colors" href="specs.html">Tech Specs</a>
+                <a class="hover:text-brand-purple transition-colors flex items-center gap-1"
+                    href="https://github.com/srg-sphynx/NotchTub" target="_blank">
+                    GitHub
+                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined text-xl">dark_mode</span>
+                </button>
+                <a class="bg-black dark:bg-white text-white dark:text-black hover:opacity-80 px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-lg"
+                    href="https://github.com/srg-sphynx/NotchTub/releases">
+                    Download Beta
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative pt-32 pb-20 px-6">
+
+        <div class="max-w-6xl mx-auto mb-20 text-center animate-on-scroll">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Power at Your Fingertips</h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                Explore the deep utility suite designed to make your notch not just bearable, but essential.
+            </p>
+        </div>
+
+        <!-- Core Capabilities Grid -->
+        <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-32 animate-on-scroll">
+
+            <!-- Media Integration -->
+            <div class="grid-card rounded-3xl p-8 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-50 transition-opacity">
+                    <span class="material-symbols-outlined text-6xl text-purple-500">music_note</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-purple-400">Media Integration</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">Full playback control with album art extraction.
+                    Works seamlessly with
+                    Apple Music and Spotify.</p>
+                <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 shadow-lg">
+                    <img src="assets/media.png" alt="Media Controls"
+                        class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+            <!-- System Insights -->
+            <div class="grid-card rounded-3xl p-8 relative overflow-hidden group bg-white dark:bg-[#0A0A0A]">
+                <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-50 transition-opacity">
+                    <span class="material-symbols-outlined text-6xl text-blue-500">monitoring</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-blue-400">System Insights</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">Real-time per-core tracking, thermal status, and
+                    network activity
+                    monitoring.</p>
+                <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 shadow-lg">
+                    <img src="assets/statsmonitor.png" alt="System Stats"
+                        class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+            <!-- Utility Suite -->
+            <div class="grid-card rounded-3xl p-8 relative overflow-hidden group bg-white dark:bg-[#0A0A0A]">
+                <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-50 transition-opacity">
+                    <span class="material-symbols-outlined text-6xl text-orange-500">inventory_2</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-orange-400">Utility Suite</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">Timers with iOS-style countdowns, persistent
+                    clipboard history, and color
+                    picker.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 shadow-lg">
+                        <img src="assets/colorpickerpanel.png" alt="Color Picker"
+                            class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 shadow-lg">
+                        <img src="assets/clipboardpanel.png" alt="Clipboard"
+                            class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lock Screen & System -->
+            <div class="grid-card rounded-3xl p-8 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-50 transition-opacity">
+                    <span class="material-symbols-outlined text-6xl text-pink-500">widgets</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-pink-400">System & Lock Screen</h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-6">Weather via Open Meteo, Bluetooth status, Focus
+                    modes, and privacy
+                    indicators for Mic/Camera.</p>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="bg-black/40 px-3 py-2 rounded-full border border-white/5 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-500 text-sm">sunny</span>
+                        <span class="text-xs font-medium">72°F</span>
+                    </div>
+                    <div class="bg-black/40 px-3 py-2 rounded-full border border-white/5 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-blue-500 text-sm">headphones</span>
+                        <span class="text-xs font-medium">AirPods</span>
+                    </div>
+                    <div class="bg-black/40 px-3 py-2 rounded-full border border-white/5 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-purple-500 text-sm">do_not_disturb_on</span>
+                        <span class="text-xs font-medium">Focus</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Interaction Showcase -->
+        <section class="max-w-6xl mx-auto mb-20 animate-on-scroll">
+            <h2 class="text-3xl font-bold mb-12 text-center">Interactive Experience</h2>
+
+            <div class="bg-zinc-900/50 border border-white/5 rounded-3xl p-8 md:p-12">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+
+                    <!-- Swipe Demo -->
+                    <div class="flex-1 w-full">
+                        <h4 class="text-xl font-bold mb-4">Fluid Gestures</h4>
+                        <p class="text-slate-400 mb-6 text-sm">Swipe horizontally on the notch to switch between active
+                            media and dashboard views.</p>
+
+                        <div
+                            class="relative h-24 bg-black rounded-xl overflow-hidden border border-white/10 group cursor-grab active:cursor-grabbing">
+                            <!-- Helper Text -->
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                                <span class="material-symbols-outlined text-4xl opacity-20 animate-pulse">swipe</span>
+                            </div>
+
+                            <!-- Sliding Content -->
+                            <div
+                                class="absolute top-0 left-0 h-full w-[200%] flex transition-transform duration-500 group-hover:-translate-x-1/4">
+                                <div
+                                    class="w-1/2 h-full flex items-center justify-center bg-purple-900/20 text-purple-200">
+                                    Now Playing
+                                </div>
+                                <div class="w-1/2 h-full flex items-center justify-center bg-blue-900/20 text-blue-200">
+                                    Dashboard
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mode Toggle -->
+                    <div class="flex-1 w-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-xl font-bold">Mode Switch</h4>
+                            <div class="flex bg-black/50 p-1 rounded-lg border border-white/10">
+                                <button
+                                    class="px-3 py-1 rounded-md bg-white/10 text-xs font-bold text-white shadow-sm">Minimal</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-xs text-slate-500 hover:text-white transition-colors">Standard</button>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 mb-6 text-sm">Toggle between a minimalistic capsule or the full
+                            standard dashboard information.</p>
+
+                        <!-- Visual representation of modes -->
+                        <div class="h-24 flex items-center justify-center bg-black rounded-xl border border-white/10">
+                            <div
+                                class="w-48 h-8 rounded-full bg-white/10 flex items-center justify-center animate-pulse">
+                                <div class="w-2 h-2 bg-white/50 rounded-full mx-1"></div>
+                                <div class="w-2 h-2 bg-white/50 rounded-full mx-1"></div>
+                                <div class="w-2 h-2 bg-white/50 rounded-full mx-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-black/5 dark:border-white/10 py-12 px-6 bg-black/5 dark:bg-black/50">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <span class="font-bold text-xl">NotchTub</span>
+                <p class="text-zinc-600 dark:text-zinc-500 text-sm">Open source since 2024. Licenced under GPL-3.0.</p>
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+                    href="https://twitter.com/saketareddy">Built by Saketa Reddy</a>
+                <span class="text-zinc-400 dark:text-zinc-600">|</span>
+                <a class="text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+                    href="#">AntiGravity AI</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
