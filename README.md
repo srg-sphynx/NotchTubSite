@@ -2,7 +2,8 @@
 
 This repository contains the source code for the official marketing website of **NotchTub**, a native macOS application that transforms the hardware notch into a dynamic, functional interface.
 
-**Live Preview:** [https://srg-sphynx.github.io/NotchTubSite/](https://srg-sphynx.github.io/NotchTubSite/)
+**Live Preview (Official):** [https://srg-sphynx.github.io/NotchTubSite/](https://srg-sphynx.github.io/NotchTubSite/)  
+**Instant Preview (HTML):** [https://htmlpreview.github.io/?https://github.com/srg-sphynx/NotchTubSite/blob/main/index.html](https://htmlpreview.github.io/?https://github.com/srg-sphynx/NotchTubSite/blob/main/index.html) (Use this if the official link is still building)
 
 ## Features
 - **Interactive Notch Simulator:** Experience the dynamic notch behavior directly on the web.
